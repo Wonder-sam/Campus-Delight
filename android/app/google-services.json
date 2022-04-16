@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "931094397369",
+    "project_id": "campus-delight-e0c99",
+    "storage_bucket": "campus-delight-e0c99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931094397369:android:6226630d827062249e3668",
+        "android_client_info": {
+          "package_name": "com.wonder.zone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931094397369-vr55rpgbshfutu62a6vrln039ldlop4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxWIALARbQbXv5yIyn_riESHvyZwmHqOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931094397369-vr55rpgbshfutu62a6vrln039ldlop4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
