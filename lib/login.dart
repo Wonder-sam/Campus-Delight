@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'homePage.dart';
+import 'controllers/bottom_navigation.dart';
 
 class LoginPage extends StatelessWidget {
   final String title;
@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
             child: const Text("Login"),
           ),
           onTap:() {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavigation()));
           }
         )
       )
