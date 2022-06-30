@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget{
             var restaurants =snapshot.data?.docs[index];
               return Column(
                 children: [
-                  RestaurantContainer(name: restaurants!['restaurantName'], image: restaurants['restaurantImage'], rating: restaurants['restaurantRating']),
+                  RestaurantContainer(name: restaurants!['restaurantName'], image: restaurants['restaurantImage'], rating: restaurants['restaurantRating'].toDouble()),
                   Container(
                     padding: const EdgeInsets.only(left: 5, right:5),
                     width: MediaQuery.of(context).size.width*0.5,
