@@ -23,31 +23,35 @@ class BottomNavigation extends StatelessWidget{
                 label: "Home",
                 icon: Icon(
                   Icons.home,
+                  color: Colors.brown
                 ),
               ),
               BottomNavigationBarItem(
                 label: "Search", 
                 icon: Icon(
                   Icons.search,
+                  color: Colors.brown
                 ),
               ),
               BottomNavigationBarItem(
                 label: "My Orders", 
                 icon: Icon(
-                  Icons.shopping_cart_outlined
+                  Icons.shopping_cart_outlined,
+                  color: Colors.brown
                 ),
               ),
               BottomNavigationBarItem(
                 label: "Profile", 
                 icon: Icon(
                   Icons.manage_accounts_outlined,
+                  color: Colors.brown
                 ),
               ),
             ],
             showSelectedLabels: true,
             showUnselectedLabels: false,
             unselectedItemColor: Colors.grey,
-            selectedItemColor: Colors.blue,
+            selectedItemColor: Colors.brown,
             currentIndex: cont.selectedIndex,
             onTap: cont.switchTab,
           );
