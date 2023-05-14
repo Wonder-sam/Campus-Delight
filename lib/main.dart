@@ -21,12 +21,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Comfortite',
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeftWithFade,
+      transitionDuration: const Duration(milliseconds: 400),
       initialRoute: "/welcome",
       getPages: RouterHelper.getRoutes()
     );
