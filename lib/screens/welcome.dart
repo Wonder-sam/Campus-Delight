@@ -9,16 +9,33 @@ class WelcomeScreen extends StatelessWidget{
     return Scaffold(
       appBar: null,
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(Get.width*0.02),
+        padding: EdgeInsets.only(left:Get.width*0.02, right:Get.width*0.02, top:Get.width*0.1, bottom:Get.width*0.02),
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
-              height: Get.height*0.6,
-              decoration: BoxDecoration(
-                color: Colors.brown.shade500,
-                borderRadius: BorderRadius.circular(Get.width*0.1)
-              ),
+              height: Get.height*0.55,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(Get.width*0.1),
+                      child: Image.asset(
+                        "assets/welcome.JPG",
+                        fit: BoxFit.cover,
+                      )
+                    )
+                  ),
+                  Positioned.fill(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.brown.withAlpha(160),
+                        borderRadius: BorderRadius.circular(Get.width*0.1)
+                      ),
+                    ),
+                  )
+                ],
+              )
             ),
             Container(
               padding: EdgeInsets.only(top: Get.height*0.03, bottom: Get.height*0.05 ),
@@ -28,24 +45,39 @@ class WelcomeScreen extends StatelessWidget{
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: const TextSpan(
-                      text: "Welcome Foodie😀\n",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 18,
-                        height: 1.5
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "We will tantalize your taste buds🤤😋",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 14
+                  Padding(
+                    padding: EdgeInsets.only(left: Get.width*0.04, right: Get.width*0.04),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: const TextSpan(
+                        text: "Welcome Foodie😀\n",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 26,
+                          height: 2,
+                          fontWeight: FontWeight.w600
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Food is our common ground, a universal experience. There is no sincere love than the love for food. ",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                              height: 1.5,
+                            ),
                           ),
-                        )
-                      ],
+                          TextSpan(
+                            text: "We will tantalize your taste buds🤤😋.",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                              height: 1.5,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -59,7 +91,7 @@ class WelcomeScreen extends StatelessWidget{
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         MaterialButton(
-                          onPressed: () => null,
+                          onPressed: () => Get.toNamed('/login'),
                           textColor: Colors.white,
                           color: Colors.brown,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Get.width*0.03)),
