@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
@@ -15,18 +16,20 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    width: Get.width*0.8,
-                    height: Get.width*0.25,
-                    alignment: Alignment.center,
-                    color: Colors.grey.shade300,
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset(
+                      "assets/logo.png",
+                      fit: BoxFit.cover,
+                      alignment: Alignment.centerLeft,
+                    )
                   ),
                   Container(
-                    padding: EdgeInsets.only(top:Get.width*0.1, bottom:Get.width*0.03),
+                    padding: EdgeInsets.only( bottom:Get.width*0.03),
                     alignment: Alignment.centerLeft,
-                    child: const Text(
+                    child: Text(
                       "Log into your account",
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.grey.shade800,
                         fontSize: 16
                       ),
                     )
@@ -81,13 +84,14 @@ class LoginPage extends StatelessWidget {
                     child: const Text("Forgotten password?"),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: Get.width*0.02),
+                    padding: EdgeInsets.only(top: Get.width*0.08),
                     child: MaterialButton(
                       onPressed: ()=>Get.toNamed("/bottomNavigator"),
                       color: Colors.brown,
                       minWidth: Get.width*0.8,
                       height: Get.width*0.15,
                       textColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Get.width*0.04)),
                       child: const Text(
                         "Login",
                         style: TextStyle(
@@ -95,6 +99,31 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ),
+                  const Text(
+                    "----------Other Sign In Options-----------",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      height: 3
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        alignment: Alignment.center,
+                        onPressed: null, 
+                        icon: FaIcon(FontAwesomeIcons.google, color: Colors.brown, size: Get.width*0.11,)
+                      ),
+                      SizedBox(width: Get.width*0.05),
+                      IconButton(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.all(0),
+                        onPressed: null, 
+                        icon: Icon(Icons.apple, color: Colors.brown, size: Get.width*0.15,)
+                      ),
+                    ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,11 +143,11 @@ class LoginPage extends StatelessWidget {
                     ],
                   )
                 ],
-              )
-            )
+              ),
+            ),
           ),
-        )
-      )
+        ),
+      ),
     );
   }
 }
