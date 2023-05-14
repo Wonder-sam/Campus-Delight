@@ -5,7 +5,7 @@ import 'package:zone/screens/welcome.dart';
 
 class RouterHelper {
   static List<GetPage> routes=[
-    GetPage(name: '/welcome', page: ()=> WelcomeScreen()),
+    GetPage(name: '/welcome', page: ()=> WelcomeScreen(), transition: Transition.leftToRightWithFade),
     GetPage(name: '/login', page: ()=> const LoginPage()),
     GetPage(name: '/bottomNavigator', page: ()=> BottomNavigator())
   ];
