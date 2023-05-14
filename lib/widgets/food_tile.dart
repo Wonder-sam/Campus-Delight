@@ -39,7 +39,7 @@ class FoodItem extends StatelessWidget{
           Positioned.fill(
             child: Align(
               alignment: Alignment.center,
-              child: Container(
+              child: SizedBox(
                 height: 45,
                 child: Column(
                   children: [

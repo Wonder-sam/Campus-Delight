@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wonder.zone">
    <application
-        android:label="zone"
+        android:label="Happy Mom"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
