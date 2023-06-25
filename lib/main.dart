@@ -1,7 +1,7 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:get/get.dart';
-import 'package:zone/routes/routes.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zone/screens/welcome.dart';
 import 'firebase/firebase_options.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ void main() async{
     webRecaptchaSiteKey: "recaptcha-v3-site-key",
     androidProvider: AndroidProvider.playIntegrity
   );
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()),);
 }
 
 class MyApp extends StatelessWidget {
@@ -20,15 +20,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       title: 'Comfortite',
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
       debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.rightToLeftWithFade,
-      initialRoute: "/welcome",
-      getPages: RouterHelper.getRoutes()
+      home: const WelcomeScreen(),
     );
   }
 }

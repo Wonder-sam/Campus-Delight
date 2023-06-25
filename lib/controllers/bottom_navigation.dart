@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zone/controllers/bottom_nav_controller.dart';
-import 'package:get/get.dart';
 
-class BottomNavigator extends StatelessWidget{
-  BottomNavigator({Key? key}): super(key: key);
-  final BottomNavController bncontroller = Get.put(BottomNavController());
+final selectedIndexProvider = StateProvider<int>((ref) => 0);
 
+void switchTab(int index, WidgetRef ref) {
+  ref.read(selectedIndexProvider.notifier).state = index;
+}
+class BottomNavigator extends ConsumerWidget{
+  const BottomNavigator({Key? key}): super(key: key);
+  
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context, WidgetRef ref){
+    final selectedIndex = ref.watch(selectedIndexProvider);
     return Scaffold(
-      body: GetBuilder<BottomNavController>(init: BottomNavController(), builder:(controller){
-          return controller.bottomTabPages.elementAt(controller.selectedIndex);
-        }
+      body: BottomNavController().bottomTabPages[selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        items: BottomNavController().getBottomTabs(),
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.brown,
+        currentIndex: selectedIndex,
+        onTap: (index)=>switchTab(index, ref),
       ),
-      bottomNavigationBar: GetBuilder<BottomNavController>( builder: (controller) {
-        return BottomNavigationBar(
-          items: controller.getBottomTabs(),
-          showSelectedLabels: true,
-          showUnselectedLabels: false,
-          unselectedItemColor: Colors.grey,
-          selectedItemColor: Colors.brown,
-          currentIndex: controller.selectedIndex,
-          onTap: controller.switchTab,
-        );
-      })
     );
   }
 }

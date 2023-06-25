@@ -1,7 +1,6 @@
-import 'package:get/get.dart';
 
-class RestaurantMenuController extends GetxController{
+class RestaurantMenuController{
   void getMenu() {
-    update();
+    // update();
   }
 }

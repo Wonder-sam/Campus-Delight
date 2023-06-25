@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:get/get.dart';
 import 'package:zone/controllers/restaurant_list_controller.dart';
 import 'package:zone/widgets/menu_container.dart';
 
@@ -11,14 +10,10 @@ class RestaurantMenuItem extends StatelessWidget{
   final String menuItemImage;
   final String menuItemDescription;
   final String restaurantName;
-  final RestaurantListController restaurantListController = Get.put(RestaurantListController());
-
   @override
   Widget build(BuildContext context){
-    return GetBuilder<RestaurantListController>(
-      init: RestaurantListController(),
-      builder: (item){
-        return !item.restaurantList.contains(restaurantName)? 
+ 
+        return !RestaurantListController().restaurantList.contains(restaurantName)? 
           MenuContainer(name: menuItemName, picture: menuItemImage, moreInfo: menuItemDescription) :
           Container(
             margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
@@ -52,7 +47,5 @@ class RestaurantMenuItem extends StatelessWidget{
               )
             )
           );
-      }
-    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zone/widgets/restaurant_container.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,8 +10,9 @@ class HomePage extends StatelessWidget{
   Widget build(BuildContext context){
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection("restaurants").doc("restaurant").collection("restaurantList").snapshots(),
+      initialData: null,
       builder: (context, snapshot) {
-        return !snapshot.hasData? const Text('Please Wait')
+        return !snapshot.hasData? const Text("Empty")
           : ListView.builder(
             padding: const EdgeInsets.only(top:10),
             itemCount: snapshot.data?.docs.length,
