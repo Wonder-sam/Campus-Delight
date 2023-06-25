@@ -39,7 +39,7 @@ class HomePageTabs extends StatelessWidget{
             ),
              Container(
               padding: const EdgeInsets.only(top:10),
-              child: Food(),
+              child: const Food(),
             ),
           ]
         )

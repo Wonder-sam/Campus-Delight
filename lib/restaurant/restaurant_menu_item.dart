@@ -4,7 +4,7 @@ import 'package:zone/controllers/restaurant_list_controller.dart';
 import 'package:zone/widgets/menu_container.dart';
 
 class RestaurantMenuItem extends StatelessWidget{
-  RestaurantMenuItem({Key? key, required this.menuItemName, required this.menuItemImage, 
+  const RestaurantMenuItem({Key? key, required this.menuItemName, required this.menuItemImage, 
   required this.menuItemDescription, required this.restaurantName}): super(key: key);
   final String menuItemName;
   final String menuItemImage;

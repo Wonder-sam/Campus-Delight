@@ -3,7 +3,7 @@ import 'package:zone/controllers/restaurant_list_controller.dart';
 import 'package:zone/widgets/food_tile.dart';
 
 class Food extends StatelessWidget{
-  Food({Key? key}) : super(key: key);
+  const Food({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context){

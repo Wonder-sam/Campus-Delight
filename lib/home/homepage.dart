@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zone/widgets/restaurant_container.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

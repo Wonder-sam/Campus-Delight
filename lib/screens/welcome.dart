@@ -109,7 +109,7 @@ class WelcomeScreen extends StatelessWidget{
                           ),
                         ),
                         MaterialButton(
-                          onPressed: () => null,
+                          onPressed: () {},
                           textColor: Colors.brown,
                           color: Colors.grey.shade200,
                           highlightColor: Colors.brown,
