@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zone/home/homepage_tabs.dart';
+import 'package:zone/home/homepage_toptabs.dart';
 
 class BottomNavController {
   
