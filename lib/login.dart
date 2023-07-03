@@ -1,11 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zone/controllers/bottom_navigation.dart';
+import 'package:zone/screens/signup.dart';
 import 'package:zone/utils/dimensions.dart';
 
-class LoginPage extends StatelessWidget {
+final usernameEmailProvider = StateProvider<String>((ref) => "");
+final passwordProvider = StateProvider<String>((ref) => "");
+
+void usernameEmailHandler(String text, WidgetRef ref) {
+  ref.read(usernameEmailProvider.notifier).state = text;
+}
+
+void passwordHandler(String text, WidgetRef ref) {
+  ref.read(passwordProvider.notifier).state = text;
+}
+class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final usernameEmail = ref.watch(usernameEmailProvider);
+    final password = ref.watch(passwordProvider);
+
+    void handleLogin () {
+      print(usernameEmail + " " + password);
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const BottomNavigator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: null,
       body: Center(
@@ -33,6 +58,7 @@ class LoginPage extends StatelessWidget {
                     )
                   ),
                   TextField(
+                    onChanged: (text)=> usernameEmailHandler(text, ref),
                     decoration: InputDecoration(
                       labelText: "Username/Email",
                       labelStyle: const TextStyle(
@@ -55,6 +81,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height*0.03),
                   TextField(
+                    onChanged: (text) => passwordHandler(text, ref),
+                    obscureText: true,
                     decoration: InputDecoration(
                       labelText: "Password",
                       labelStyle: const TextStyle(
@@ -84,11 +112,7 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: MediaQuery.of(context).size.width*0.02),
                     child: MaterialButton(
-                      onPressed: ()=>Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const BottomNavigator(),
-                        ),
-                      ),
+                      onPressed: ()=> handleLogin(),
                       color: Colors.brown,
                       minWidth: ScreenDimensions().dim_80(context),
                       height: ScreenDimensions().dim_15(context),
@@ -101,15 +125,19 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Row(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text("Don't have an account?"),
+                      const Text("Don't have an account?"),
                       TextButton(
-                        onPressed: null,
-                        child: Text(
+                        onPressed: ()=> Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => SignUpScreen(),
+                          ),
+                        ),
+                        child: const Text(
                           "Sign up",
                           style: TextStyle(
                             color: Colors.brown
