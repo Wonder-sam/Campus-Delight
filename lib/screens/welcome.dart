@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zone/login.dart';
+import 'package:zone/screens/signup.dart';
 
 class WelcomeScreen extends StatelessWidget{
   const WelcomeScreen({Key? key}): super(key: key);
@@ -109,7 +110,11 @@ class WelcomeScreen extends StatelessWidget{
                           ),
                         ),
                         MaterialButton(
-                          onPressed: () {},
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const SignUpScreen(),
+                            ),
+                          ),
                           textColor: Colors.brown,
                           color: Colors.grey.shade200,
                           highlightColor: Colors.brown,
