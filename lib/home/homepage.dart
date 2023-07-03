@@ -26,13 +26,13 @@ class HomePage extends StatelessWidget{
                     child: const Divider(
                       color: Colors.black, 
                       thickness: 2, 
-                    )
-                  )
-                ]
+                    ),
+                  ),
+                ],
               );
             },
           );
-      }
+      },
     );
   }
 }
