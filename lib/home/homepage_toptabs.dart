@@ -3,8 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:zone/home/food.dart';
 import 'package:zone/home/homepage.dart';
 import 'package:zone/utils/dimensions.dart';
-class HomePageTabs extends StatelessWidget{
-   const HomePageTabs({Key? key}): super(key: key);
+
+class HomePageTabs extends StatelessWidget {
+  const HomePageTabs({Key? key}) : super(key: key);
 
   static const List<Tab> myTabs = <Tab>[
     Tab(text: 'Explore'),
@@ -12,7 +13,7 @@ class HomePageTabs extends StatelessWidget{
   ];
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
@@ -24,9 +25,7 @@ class HomePageTabs extends StatelessWidget{
           title: Text(
             "Happy Mom",
             style: GoogleFonts.oleoScript(
-              textStyle: const TextStyle(
-
-              )
+              textStyle: const TextStyle(),
             ),
           ),
           backgroundColor: Colors.brown,
@@ -34,16 +33,16 @@ class HomePageTabs extends StatelessWidget{
         body: TabBarView(
           children: [
             Container(
-              padding: const EdgeInsets.only(top:10),
+              padding: const EdgeInsets.only(top: 10),
               child: const HomePage(),
             ),
-             Container(
-              padding: const EdgeInsets.only(top:10),
+            Container(
+              padding: const EdgeInsets.only(top: 10),
               child: const Food(),
             ),
-          ]
-        )
-      )
+          ],
+        ),
+      ),
     );
   }
 }

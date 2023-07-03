@@ -7,11 +7,12 @@ final selectedIndexProvider = StateProvider<int>((ref) => 0);
 void switchTab(int index, WidgetRef ref) {
   ref.read(selectedIndexProvider.notifier).state = index;
 }
-class BottomNavigator extends ConsumerWidget{
-  const BottomNavigator({Key? key}): super(key: key);
-  
+
+class BottomNavigator extends ConsumerWidget {
+  const BottomNavigator({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context, WidgetRef ref){
+  Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = ref.watch(selectedIndexProvider);
     return Scaffold(
       body: BottomNavController().bottomTabPages[selectedIndex],
@@ -22,7 +23,7 @@ class BottomNavigator extends ConsumerWidget{
         unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.brown,
         currentIndex: selectedIndex,
-        onTap: (index)=>switchTab(index, ref),
+        onTap: (index) => switchTab(index, ref),
       ),
     );
   }

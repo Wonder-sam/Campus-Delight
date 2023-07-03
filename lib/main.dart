@@ -5,14 +5,16 @@ import 'package:zone/screens/welcome.dart';
 import 'firebase/firebase_options.dart';
 import 'package:flutter/material.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
-  await FirebaseAppCheck.instance.activate(
-    webRecaptchaSiteKey: "recaptcha-v3-site-key",
-    androidProvider: AndroidProvider.playIntegrity
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const ProviderScope(child: MyApp()),);
+  await FirebaseAppCheck.instance.activate(
+      webRecaptchaSiteKey: "recaptcha-v3-site-key", androidProvider: AndroidProvider.playIntegrity);
+  runApp(
+    const ProviderScope(child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
