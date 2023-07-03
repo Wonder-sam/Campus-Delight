@@ -2,12 +2,24 @@ import 'package:flutter/material.dart';
 
 class ScreenDimensions {
 
+  double dim_05 (BuildContext context) {
+    return MediaQuery.of(context).size.width *.05;
+  }
+
  double dim_10 (BuildContext context) {
     return MediaQuery.of(context).size.width *.1;
   }
 
+  double dim_10H (BuildContext context) {
+    return MediaQuery.of(context).size.height *.1;
+  }
+
   double dim_15 (BuildContext context) {
     return MediaQuery.of(context).size.width *.15;
+  }
+
+  double dim_15H (BuildContext context) {
+    return MediaQuery.of(context).size.height *.15;
   }
 
    double dim_20 (BuildContext context) {
