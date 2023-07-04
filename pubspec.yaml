@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   cloud_firestore: ^4.7.0
-  firebase_core: ^2.12.0
+  firebase_core: ^2.14.0
   firebase_analytics: ^10.4.0
   firebase_auth: ^4.6.0
   firebase_storage: ^11.2.0
@@ -45,6 +45,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
   flutter_native_splash: ^2.2.19
+  change_app_package_name: ^1.1.0
 
 flutter_native_splash:
   color: "#795548"
