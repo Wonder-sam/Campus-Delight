@@ -11,7 +11,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate(
-      webRecaptchaSiteKey: "recaptcha-v3-site-key", androidProvider: AndroidProvider.playIntegrity);
+    webRecaptchaSiteKey: "recaptcha-v3-site-key",
+    androidProvider: AndroidProvider.playIntegrity,
+  );
   runApp(
     const ProviderScope(child: MyApp()),
   );
