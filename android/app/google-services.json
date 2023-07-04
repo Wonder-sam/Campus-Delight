@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "931094397369",
-    "project_id": "campus-delight-e0c99",
-    "storage_bucket": "campus-delight-e0c99.appspot.com"
+    "project_number": "493362261757",
+    "project_id": "familykitchen-fe204",
+    "storage_bucket": "familykitchen-fe204.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:931094397369:android:6226630d827062249e3668",
+        "mobilesdk_app_id": "1:493362261757:android:13bb67b1324aa7afa2d894",
         "android_client_info": {
-          "package_name": "com.wonder.zone"
+          "package_name": "com.wonder.familyKitchen"
         }
       },
       "oauth_client": [
         {
-          "client_id": "931094397369-vr55rpgbshfutu62a6vrln039ldlop4a.apps.googleusercontent.com",
+          "client_id": "493362261757-l93f60kivhdo7ctoc0eqb4r7qotivbvq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBxWIALARbQbXv5yIyn_riESHvyZwmHqOs"
+          "current_key": "AIzaSyDeOCvwjtWgAqI419HMbj2VRKuEtzP4Jf4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "931094397369-vr55rpgbshfutu62a6vrln039ldlop4a.apps.googleusercontent.com",
+              "client_id": "493362261757-l93f60kivhdo7ctoc0eqb4r7qotivbvq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

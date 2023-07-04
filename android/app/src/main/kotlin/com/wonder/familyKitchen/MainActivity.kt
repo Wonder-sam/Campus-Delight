@@ -1,4 +1,4 @@
-package com.wonder.zone
+package com.wonder.familyKitchen
 
 import io.flutter.embedding.android.FlutterActivity
 
