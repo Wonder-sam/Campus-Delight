@@ -76,7 +76,10 @@ class SignUpScreen extends ConsumerWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: ScreenDimensions().dim_05(context), bottom: MediaQuery.of(context).size.width * 0.03),
+                  padding: EdgeInsets.only(
+                    top: ScreenDimensions().dim_05(context),
+                    bottom: MediaQuery.of(context).size.width * 0.03,
+                  ),
                   alignment: Alignment.centerLeft,
                   child: const Text(
                     "Create new account",
