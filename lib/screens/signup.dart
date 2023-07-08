@@ -6,7 +6,7 @@ import 'package:zone/firebase/firebase_functions.dart';
 import 'package:zone/login.dart';
 import 'package:zone/screens/createAccount.dart';
 import 'package:zone/utils/dimensions.dart';
-import 'package:zone/widgets/loading_acitivity.dart';
+import 'package:zone/widgets/loading_activity.dart';
 
 final emailProvider = StateProvider((ref) => "");
 final loadingProvider = StateProvider((ref) => false);
