@@ -106,23 +106,39 @@ class LoginPage extends ConsumerWidget {
                     ),
                     decoration: InputDecoration(
                       labelText: "Password",
-                      labelStyle: TextStyle(color: theme['inputFieldLabel'], fontSize: 14),
+                      labelStyle: TextStyle(
+                        color: theme['inputFieldLabel'],
+                        fontSize: 14,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: null,
+                        icon: Icon(
+                          Icons.visibility,
+                          color: theme['inputFieldLabel'],
+                        ),
+                      ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
                         borderSide: BorderSide(
                           width: 0.5,
                           color: theme['inputFieldBorder'],
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
                         borderSide: BorderSide(
                           width: 0.9,
                           color: theme['inputFieldBorder'],
                         ),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
                         borderSide: BorderSide(
                           width: 0.5,
                           color: theme['inputFieldBorder'],
