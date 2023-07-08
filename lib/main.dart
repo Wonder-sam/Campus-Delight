@@ -1,6 +1,7 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zone/controllers/theme_controller.dart';
 import 'package:zone/screens/welcome.dart';
 import 'firebase/firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -11,23 +12,24 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate(
-    webRecaptchaSiteKey: "recaptcha-v3-site-key",
-    androidProvider: AndroidProvider.playIntegrity,
+    webRecaptchaSiteKey: 'recaptcha-v3-site-key',
   );
   runApp(
     const ProviderScope(child: MyApp()),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.read(selectThemeProvider);
     return MaterialApp(
       title: 'Comfortite',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: theme["primary"],
+        colorScheme: theme["themeBackground"],
       ),
       debugShowCheckedModeBanner: false,
       home: const WelcomeScreen(),
