@@ -64,4 +64,8 @@ class ScreenDimensions {
   double dim_100(BuildContext context) {
     return MediaQuery.of(context).size.width;
   }
+
+  double dim_100h(BuildContext context) {
+    return MediaQuery.of(context).size.height;
+  }
 }
