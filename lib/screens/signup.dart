@@ -12,10 +12,44 @@ final emailProvider = StateProvider((ref) => "");
 final loadingProvider = StateProvider((ref) => false);
 final usernameProvider = StateProvider((ref) => "");
 final passwordProvider = StateProvider((ref) => "");
+final passwordVisibilityProvider = StateProvider((ref) => false);
 final confirmPasswordProvider = StateProvider((ref) => "");
+final confirmPasswordVisibilityProvider = StateProvider((ref) => false);
 final passwordMatchProvider = StateProvider((ref) => false);
 final passwordStrengthProvider = StateProvider((ref) => "weak");
 final usernameErrorProvider = StateProvider((ref) => "");
+
+final selectPasswordIconProvider = Provider<Icon>((ref) {
+  Map<String, dynamic> theme = ref.watch(selectThemeProvider);
+  final passwordVisibilityState = ref.watch(passwordVisibilityProvider);
+  if (passwordVisibilityState == false) {
+    return Icon(
+      Icons.visibility_outlined,
+      color: theme['inputFieldLabel'],
+    );
+  } else {
+    return Icon(
+      Icons.visibility_off_outlined,
+      color: theme['inputFieldLabel'],
+    );
+  }
+});
+
+final selectConfirmPasswordIconProvider = Provider<Icon>((ref) {
+  Map<String, dynamic> theme = ref.watch(selectThemeProvider);
+  final confirmPasswordVisibilityState = ref.watch(confirmPasswordVisibilityProvider);
+  if (confirmPasswordVisibilityState == false) {
+    return Icon(
+      Icons.visibility_outlined,
+      color: theme['inputFieldLabel'],
+    );
+  } else {
+    return Icon(
+      Icons.visibility_off_outlined,
+      color: theme['inputFieldLabel'],
+    );
+  }
+});
 
 //handle email
 void emailHandler(String text, WidgetRef ref) {
@@ -67,20 +101,26 @@ class SignUpScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final email = ref.watch(emailProvider);
     final password = ref.watch(passwordProvider);
+    final passwordVisibility = ref.watch(passwordVisibilityProvider);
     final username = ref.watch(usernameProvider);
     final confirmPassword = ref.watch(confirmPasswordProvider);
+    final confirmPasswordVisibility = ref.watch(confirmPasswordVisibilityProvider);
     final passwordMatch = ref.watch(passwordMatchProvider);
     final passwordStrength = ref.watch(passwordStrengthProvider);
     final usernameError = ref.watch(usernameErrorProvider);
     final loading = ref.watch(loadingProvider);
     Map<String, dynamic> theme = ref.watch(selectThemeProvider);
+    Icon selectedPasswordIcon = ref.watch(selectPasswordIconProvider);
+    Icon selectedConfirmPasswordIcon = ref.watch(selectConfirmPasswordIconProvider);
 
     void handleSignUp() async {
+      ref.read(loadingProvider.notifier).state = true;
       if (usernameError == "" && passwordStrength != "weak" && email != "" && passwordMatch != false) {
         await signUpAndAddUser(email, password, username).then(
             (value) => {
                   if (value == "success")
                     {
+                      ref.read(loadingProvider.notifier).state = false,
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const CreateAccount(),
@@ -89,6 +129,8 @@ class SignUpScreen extends ConsumerWidget {
                     }
                 },
             onError: (e) => print(e));
+      } else {
+        ref.read(loadingProvider.notifier).state = false;
       }
     }
 
@@ -97,11 +139,6 @@ class SignUpScreen extends ConsumerWidget {
       backgroundColor: theme['background'],
       body: Stack(
         children: [
-          ref.read(loadingProvider.notifier).state == true
-              ? LoadingActivity()
-              : Spacer(
-                  flex: 1,
-                ),
           SingleChildScrollView(
             padding: EdgeInsets.only(
               left: ScreenDimensions().dim_10(context),
@@ -236,7 +273,7 @@ class SignUpScreen extends ConsumerWidget {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                 TextField(
                   onChanged: (text) => passwordHandler(text, ref),
-                  obscureText: true,
+                  obscureText: !passwordVisibility,
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
                       color: theme['inputFieldLabel'],
@@ -247,6 +284,10 @@ class SignUpScreen extends ConsumerWidget {
                     labelStyle: TextStyle(
                       color: theme['inputFieldLabel'],
                       fontSize: 14,
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () => ref.read(passwordVisibilityProvider.notifier).state = !passwordVisibility,
+                      icon: selectedPasswordIcon,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
@@ -294,7 +335,7 @@ class SignUpScreen extends ConsumerWidget {
                 ),
                 TextField(
                   onChanged: (text) => confirmPasswordHandler(text, ref),
-                  obscureText: true,
+                  obscureText: !confirmPasswordVisibility,
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
                       color: theme['inputFieldLabel'],
@@ -305,6 +346,10 @@ class SignUpScreen extends ConsumerWidget {
                     labelStyle: TextStyle(
                       color: theme['inputFieldLabel'],
                       fontSize: 14,
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () => ref.read(confirmPasswordVisibilityProvider.notifier).state = !confirmPasswordVisibility,
+                      icon: selectedConfirmPasswordIcon,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
@@ -399,6 +444,11 @@ class SignUpScreen extends ConsumerWidget {
               ],
             ),
           ),
+          loading == true
+              ? LoadingActivity()
+              : Spacer(
+                  flex: 1,
+                ),
         ],
       ),
     );
