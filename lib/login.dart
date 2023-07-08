@@ -2,21 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zone/controllers/bottom_navigation.dart';
+import 'package:zone/controllers/login_controller.dart';
 import 'package:zone/controllers/theme_controller.dart';
 import 'package:zone/firebase/firebase_functions.dart';
-import 'package:zone/screens/signup.dart';
 import 'package:zone/utils/dimensions.dart';
-
-final usernameEmailProvider = StateProvider<String>((ref) => "");
-final passwordProvider = StateProvider<String>((ref) => "");
-
-void usernameEmailHandler(String text, WidgetRef ref) {
-  ref.read(usernameEmailProvider.notifier).state = text;
-}
-
-void passwordHandler(String text, WidgetRef ref) {
-  ref.read(passwordProvider.notifier).state = text;
-}
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -25,8 +14,10 @@ class LoginPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final usernameEmail = ref.watch(usernameEmailProvider);
     final password = ref.watch(passwordProvider);
+    final passwordVisibility = ref.watch(loginPasswordVisibilityProvider);
     final themeText = ref.watch(themeProvider);
     Map<String, dynamic> theme = ref.watch(selectThemeProvider);
+    Icon loginSelectedPasswordIcon = ref.watch(loginSelectPasswordIconProvider);
 
     void handleLogin() async {
       String loginStatus = await login(usernameEmail, password);
@@ -98,7 +89,7 @@ class LoginPage extends ConsumerWidget {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   TextField(
                     onChanged: (text) => passwordHandler(text, ref),
-                    obscureText: true,
+                    obscureText: !passwordVisibility,
                     style: GoogleFonts.inter(
                       textStyle: TextStyle(
                         color: theme['inputFieldLabel'],
@@ -111,11 +102,8 @@ class LoginPage extends ConsumerWidget {
                         fontSize: 14,
                       ),
                       suffixIcon: IconButton(
-                        onPressed: null,
-                        icon: Icon(
-                          Icons.visibility,
-                          color: theme['inputFieldLabel'],
-                        ),
+                        onPressed: () => ref.read(loginPasswordVisibilityProvider.notifier).state = !passwordVisibility,
+                        icon: loginSelectedPasswordIcon,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
