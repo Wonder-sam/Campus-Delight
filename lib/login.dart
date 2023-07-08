@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:zone/controllers/bottom_navigation.dart';
 import 'package:zone/controllers/theme_controller.dart';
 import 'package:zone/firebase/firebase_functions.dart';
@@ -63,6 +64,11 @@ class LoginPage extends ConsumerWidget {
                       )),
                   TextField(
                     onChanged: (text) => usernameEmailHandler(text, ref),
+                    style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: theme['inputFieldLabel'],
+                      ),
+                    ),
                     decoration: InputDecoration(
                       labelText: "Username/Email",
                       labelStyle: TextStyle(color: theme['inputFieldLabel'], fontSize: 14),
@@ -93,6 +99,11 @@ class LoginPage extends ConsumerWidget {
                   TextField(
                     onChanged: (text) => passwordHandler(text, ref),
                     obscureText: true,
+                    style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: theme['inputFieldLabel'],
+                      ),
+                    ),
                     decoration: InputDecoration(
                       labelText: "Password",
                       labelStyle: TextStyle(color: theme['inputFieldLabel'], fontSize: 14),
