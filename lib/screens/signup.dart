@@ -175,7 +175,7 @@ class SignUpScreen extends ConsumerWidget {
                   onChanged: (text) => emailHandler(text, ref),
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
-                      color: theme['inputFieldLabel'],
+                      color: theme['inputFieldText'],
                     ),
                   ),
                   decoration: InputDecoration(
@@ -218,7 +218,7 @@ class SignUpScreen extends ConsumerWidget {
                   onChanged: (text) => usernameHandler(text, ref),
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
-                      color: theme['inputFieldLabel'],
+                      color: theme['inputFieldText'],
                     ),
                   ),
                   decoration: InputDecoration(
@@ -276,7 +276,7 @@ class SignUpScreen extends ConsumerWidget {
                   obscureText: !passwordVisibility,
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
-                      color: theme['inputFieldLabel'],
+                      color: theme['inputFieldText'],
                     ),
                   ),
                   decoration: InputDecoration(
@@ -338,7 +338,7 @@ class SignUpScreen extends ConsumerWidget {
                   obscureText: !confirmPasswordVisibility,
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
-                      color: theme['inputFieldLabel'],
+                      color: theme['inputFieldText'],
                     ),
                   ),
                   decoration: InputDecoration(

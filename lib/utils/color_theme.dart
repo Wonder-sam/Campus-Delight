@@ -6,6 +6,7 @@ final Map<String, dynamic> lightTheme = {
   "background": Colors.white,
   "inputFieldBorder": Colors.brown,
   "inputFieldLabel": Colors.brown,
+  "inputFieldText": Colors.black,
   "texts": Colors.white70,
   "buttonWrapper": Colors.grey.shade100
 };
@@ -16,6 +17,7 @@ final Map<String, dynamic> darkTheme = {
   "background": Colors.black54,
   "inputFieldBorder": Colors.white,
   "inputFieldLabel": Colors.grey,
+  "inputFieldText": Colors.grey,
   "texts": Colors.white70,
   "buttonWrapper": Colors.grey.shade900
 };
