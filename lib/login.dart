@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zone/controllers/bottom_navigation.dart';
+import 'package:zone/controllers/theme_controller.dart';
+import 'package:zone/firebase/firebase_functions.dart';
 import 'package:zone/screens/signup.dart';
 import 'package:zone/utils/dimensions.dart';
 
@@ -14,6 +16,7 @@ void usernameEmailHandler(String text, WidgetRef ref) {
 void passwordHandler(String text, WidgetRef ref) {
   ref.read(passwordProvider.notifier).state = text;
 }
+
 class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -21,18 +24,23 @@ class LoginPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final usernameEmail = ref.watch(usernameEmailProvider);
     final password = ref.watch(passwordProvider);
+    final themeText = ref.watch(themeProvider);
+    Map<String, dynamic> theme = ref.watch(selectThemeProvider);
 
-    void handleLogin () {
-      print(usernameEmail + " " + password);
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const BottomNavigator(),
-        ),
-      );
+    void handleLogin() async {
+      String loginStatus = await login(usernameEmail, password);
+      if (loginStatus == "success") {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const BottomNavigator(),
+          ),
+        );
+      }
     }
 
     return Scaffold(
       appBar: null,
+      backgroundColor: theme["background"],
       body: Center(
         child: SingleChildScrollView(
           child: Container(
@@ -47,81 +55,87 @@ class LoginPage extends ConsumerWidget {
                     color: Colors.grey.shade300,
                   ),
                   Container(
-                    padding: EdgeInsets.only(top:ScreenDimensions().dim_10(context), bottom:MediaQuery.of(context).size.width*0.03),
-                    alignment: Alignment.centerLeft,
-                    child: const Text(
-                      "Log into your account",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16
-                      ),
-                    )
-                  ),
+                      padding: EdgeInsets.only(top: ScreenDimensions().dim_10(context), bottom: MediaQuery.of(context).size.width * 0.03),
+                      alignment: Alignment.centerLeft,
+                      child: const Text(
+                        "Log into your account",
+                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                      )),
                   TextField(
-                    onChanged: (text)=> usernameEmailHandler(text, ref),
+                    onChanged: (text) => usernameEmailHandler(text, ref),
                     decoration: InputDecoration(
                       labelText: "Username/Email",
-                      labelStyle: const TextStyle(
-                        color: Colors.brown,
-                        fontSize: 14
-                      ),
+                      labelStyle: TextStyle(color: theme['inputFieldLabel'], fontSize: 14),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width*0.04),
-                        borderSide: const BorderSide(width: 0.5, color: Colors.brown)
+                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width*0.04),
-                        borderSide: const BorderSide(width: 0.9, color: Colors.brown)
+                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderSide: BorderSide(
+                          width: 0.9,
+                          color: theme['inputFieldBorder'],
+                        ),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width*0.04),
-                        borderSide: const BorderSide(width: 0.5, color: Colors.brown)
-                      )
+                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   TextField(
                     onChanged: (text) => passwordHandler(text, ref),
                     obscureText: true,
                     decoration: InputDecoration(
                       labelText: "Password",
-                      labelStyle: const TextStyle(
-                        color: Colors.brown,
-                        fontSize: 14
-                      ),
+                      labelStyle: TextStyle(color: theme['inputFieldLabel'], fontSize: 14),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width*0.04),
-                        borderSide: const BorderSide(width: 0.5, color: Colors.brown)
+                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width*0.04),
-                        borderSide: const BorderSide(width: 0.9, color: Colors.brown)
+                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderSide: BorderSide(
+                          width: 0.9,
+                          color: theme['inputFieldBorder'],
+                        ),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width*0.04),
-                        borderSide: const BorderSide(width: 0.5, color: Colors.brown)
-                      )
+                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
+                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
                     width: double.maxFinite,
                     alignment: Alignment.centerRight,
                     child: const Text("Forgotten password?"),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.width*0.02),
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.02),
                     child: MaterialButton(
-                      onPressed: ()=> handleLogin(),
+                      onPressed: () => handleLogin(),
                       color: Colors.brown,
                       minWidth: ScreenDimensions().dim_80(context),
                       height: ScreenDimensions().dim_15(context),
                       textColor: Colors.white,
                       child: const Text(
                         "Login",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400
-                        ),
+                        style: TextStyle(fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
@@ -130,28 +144,25 @@ class LoginPage extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      const Text("Don't have an account?"),
+                      Text(
+                        "Don't have an account?",
+                        style: TextStyle(color: theme['inputFieldLabel']),
+                      ),
                       TextButton(
-                        onPressed: ()=> Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => SignUpScreen(),
-                          ),
-                        ),
+                        onPressed: () => ref.read(themeProvider.notifier).state = "dark",
                         child: const Text(
                           "Sign up",
-                          style: TextStyle(
-                            color: Colors.brown
-                          ),
-                        )
+                          style: TextStyle(color: Colors.brown),
+                        ),
                       )
                     ],
-                  )
+                  ),
                 ],
-              )
-            )
+              ),
+            ),
           ),
-        )
-      )
+        ),
+      ),
     );
   }
 }
