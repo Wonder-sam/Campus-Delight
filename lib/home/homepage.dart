@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:zone/widgets/restaurant_container.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -7,7 +8,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold(
+      appBar: null,
+      body: Center(
+        child: SpinKitCircle(
+          color: Colors.brown,
+          size: 50,
+        ),
+      ),
+    );
     // StreamBuilder<QuerySnapshot>(
     //   stream: FirebaseFirestore.instance.collection("restaurants").doc("restaurant").collection("restaurantList").snapshots(),
     //   initialData: null,
