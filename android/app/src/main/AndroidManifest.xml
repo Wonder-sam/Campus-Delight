@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wonder.familyKitchen">
    <application
-        android:label="Happy Mom"
+        android:label="familyKitchen"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
