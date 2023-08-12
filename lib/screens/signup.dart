@@ -52,322 +52,326 @@ class SignUpScreen extends ConsumerWidget {
     return Scaffold(
       appBar: null,
       backgroundColor: theme['background'],
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            padding: EdgeInsets.only(
-              left: ScreenDimensions().dim_10(context),
-              right: ScreenDimensions().dim_10(context),
-              top: ScreenDimensions().dim_10H(context),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Sign Up",
-                  textAlign: TextAlign.start,
-                  style: GoogleFonts.inter(
-                    textStyle: const TextStyle(
-                      color: Colors.brown,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: ScreenDimensions().dim_05(context),
-                    bottom: MediaQuery.of(context).size.width * 0.03,
-                  ),
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                    "Create new account",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                TextField(
-                  onChanged: (text) => emailHandler(text, ref),
-                  style: GoogleFonts.inter(
-                    textStyle: TextStyle(
-                      color: theme['inputFieldText'],
-                    ),
-                  ),
-                  decoration: InputDecoration(
-                    labelText: "Email",
-                    labelStyle: TextStyle(
-                      color: theme['inputFieldLabel'],
-                      fontSize: 14,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.5,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.9,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.5,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                TextField(
-                  onChanged: (text) => usernameHandler(text, ref),
-                  style: GoogleFonts.inter(
-                    textStyle: TextStyle(
-                      color: theme['inputFieldText'],
-                    ),
-                  ),
-                  decoration: InputDecoration(
-                    labelText: "Username",
-                    labelStyle: TextStyle(
-                      color: theme['inputFieldLabel'],
-                      fontSize: 14,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.5,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.9,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.5,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                  ),
-                ),
-                usernameError != ""
-                    ? Container(
-                        padding: EdgeInsets.all(
-                          MediaQuery.of(context).size.width * 0.02,
-                        ),
-                        width: double.maxFinite,
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          usernameError,
-                        ),
-                      )
-                    : const SizedBox(
-                        height: 0,
-                      ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                TextField(
-                  onChanged: (text) => signUpPasswordHandler(text, ref),
-                  obscureText: !passwordVisibility,
-                  style: GoogleFonts.inter(
-                    textStyle: TextStyle(
-                      color: theme['inputFieldText'],
-                    ),
-                  ),
-                  decoration: InputDecoration(
-                    labelText: "Password",
-                    labelStyle: TextStyle(
-                      color: theme['inputFieldLabel'],
-                      fontSize: 14,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () => ref.read(passwordVisibilityProvider.notifier).state = !passwordVisibility,
-                      icon: selectedPasswordIcon,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.5,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.9,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.5,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(
-                    MediaQuery.of(context).size.width * 0.02,
-                  ),
-                  width: double.maxFinite,
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    "Password strength: " + passwordStrength,
+      body: SizedBox(
+        height: dim_100h(context),
+        width: dim_100(context),
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              padding: EdgeInsets.only(
+                left: dim_10(context),
+                right: dim_10(context),
+                top: dim_10H(context),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Sign Up",
+                    textAlign: TextAlign.start,
                     style: GoogleFonts.inter(
-                      textStyle: TextStyle(
-                        color: theme['inputFieldLabel'],
+                      textStyle: const TextStyle(
+                        color: Colors.brown,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
-                ),
-                TextField(
-                  onChanged: (text) => confirmPasswordHandler(text, ref),
-                  obscureText: !confirmPasswordVisibility,
-                  style: GoogleFonts.inter(
-                    textStyle: TextStyle(
-                      color: theme['inputFieldText'],
+                  Container(
+                    padding: EdgeInsets.only(
+                      top: dim_05(context),
+                      bottom: MediaQuery.of(context).size.width * 0.03,
                     ),
-                  ),
-                  decoration: InputDecoration(
-                    labelText: "Confirm Password",
-                    labelStyle: TextStyle(
-                      color: theme['inputFieldLabel'],
-                      fontSize: 14,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () => ref.read(confirmPasswordVisibilityProvider.notifier).state = !confirmPasswordVisibility,
-                      icon: selectedConfirmPasswordIcon,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.5,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.9,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.04,
-                      ),
-                      borderSide: BorderSide(
-                        width: 0.5,
-                        color: theme['inputFieldBorder'],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
-                  width: double.maxFinite,
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    passwordMatch && confirmPassword != ''
-                        ? "Passwords Match"
-                        : !passwordMatch && confirmPassword != ''
-                            ? "Passwords do not match"
-                            : "",
-                    style: GoogleFonts.inter(
-                      textStyle: TextStyle(
-                        color: theme['inputFieldLabel'],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.05),
-                  child: MaterialButton(
-                    onPressed: () => handleSignUp(),
-                    color: Colors.brown,
-                    minWidth: ScreenDimensions().dim_80(context),
-                    height: ScreenDimensions().dim_15(context),
-                    textColor: Colors.white,
+                    alignment: Alignment.centerLeft,
                     child: const Text(
-                      "Sign Up",
+                      "Create new account",
                       style: TextStyle(
-                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                        fontSize: 16,
                       ),
                     ),
                   ),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      "Already have an account?",
+                  TextField(
+                    onChanged: (text) => emailHandler(text, ref),
+                    style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: theme['inputFieldText'],
+                      ),
+                    ),
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      labelStyle: TextStyle(
+                        color: theme['inputFieldLabel'],
+                        fontSize: 14,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.9,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  TextField(
+                    onChanged: (text) => usernameHandler(text, ref),
+                    style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: theme['inputFieldText'],
+                      ),
+                    ),
+                    decoration: InputDecoration(
+                      labelText: "Username",
+                      labelStyle: TextStyle(
+                        color: theme['inputFieldLabel'],
+                        fontSize: 14,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.9,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                    ),
+                  ),
+                  usernameError != ""
+                      ? Container(
+                          padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.02,
+                          ),
+                          width: double.maxFinite,
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            usernameError,
+                          ),
+                        )
+                      : const SizedBox(
+                          height: 0,
+                        ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  TextField(
+                    onChanged: (text) => signUpPasswordHandler(text, ref),
+                    obscureText: !passwordVisibility,
+                    style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: theme['inputFieldText'],
+                      ),
+                    ),
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                      labelStyle: TextStyle(
+                        color: theme['inputFieldLabel'],
+                        fontSize: 14,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () => ref.read(passwordVisibilityProvider.notifier).state = !passwordVisibility,
+                        icon: selectedPasswordIcon,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.9,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(
+                      MediaQuery.of(context).size.width * 0.02,
+                    ),
+                    width: double.maxFinite,
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "Password strength: " + passwordStrength,
                       style: GoogleFonts.inter(
                         textStyle: TextStyle(
                           color: theme['inputFieldLabel'],
                         ),
                       ),
                     ),
-                    TextButton(
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
+                  ),
+                  TextField(
+                    onChanged: (text) => confirmPasswordHandler(text, ref),
+                    obscureText: !confirmPasswordVisibility,
+                    style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: theme['inputFieldText'],
+                      ),
+                    ),
+                    decoration: InputDecoration(
+                      labelText: "Confirm Password",
+                      labelStyle: TextStyle(
+                        color: theme['inputFieldLabel'],
+                        fontSize: 14,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () => ref.read(confirmPasswordVisibilityProvider.notifier).state = !confirmPasswordVisibility,
+                        icon: selectedConfirmPasswordIcon,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
                         ),
                       ),
-                      child: const Text(
-                        "Login",
-                        style: TextStyle(
-                          color: Colors.brown,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.9,
+                          color: theme['inputFieldBorder'],
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width * 0.04,
+                        ),
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: theme['inputFieldBorder'],
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
+                    width: double.maxFinite,
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      passwordMatch && confirmPassword != ''
+                          ? "Passwords Match"
+                          : !passwordMatch && confirmPassword != ''
+                              ? "Passwords do not match"
+                              : "",
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          color: theme['inputFieldLabel'],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.05),
+                    child: MaterialButton(
+                      onPressed: () => handleSignUp(),
+                      color: Colors.brown,
+                      minWidth: dim_80(context),
+                      height: dim_15(context),
+                      textColor: Colors.white,
+                      child: const Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        "Already have an account?",
+                        style: GoogleFonts.inter(
+                          textStyle: TextStyle(
+                            color: theme['inputFieldLabel'],
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        ),
+                        child: const Text(
+                          "Login",
+                          style: TextStyle(
+                            color: Colors.brown,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          loading == true
-              ? LoadingActivity()
-              : Spacer(
-                  flex: 1,
-                ),
-        ],
+            loading == true
+                ? LoadingActivity()
+                : SizedBox(
+                    height: 0,
+                  )
+          ],
+        ),
       ),
     );
   }
