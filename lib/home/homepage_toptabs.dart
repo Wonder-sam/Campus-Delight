@@ -18,7 +18,7 @@ class HomePageTabs extends StatelessWidget {
       length: myTabs.length,
       child: Scaffold(
         appBar: AppBar(
-          leadingWidth: ScreenDimensions().dim_60(context),
+          leadingWidth: dim_60(context),
           leading: const TabBar(
             tabs: myTabs,
           ),
