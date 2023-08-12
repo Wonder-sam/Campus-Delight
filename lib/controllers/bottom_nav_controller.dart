@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zone/home/homepage.dart';
 import 'package:zone/home/homepage_toptabs.dart';
 
 class BottomNavController {
-  final bottomTabPages = [
-    const HomePageTabs(),
-    const Text("Search"),
-    const Text("Order"),
-    const Text("Profile")
-  ];
-
   List<BottomNavigationBarItem> bottomTabs = const [
     BottomNavigationBarItem(
       label: "Home",
@@ -31,4 +26,26 @@ class BottomNavController {
   List<BottomNavigationBarItem> getBottomTabs() {
     return bottomTabs;
   }
+}
+
+final selectedTabProvider = Provider<Widget>((ref) {
+  int selectedIndex = ref.watch(selectedIndexProvider);
+  switch (selectedIndex) {
+    case 0:
+      return const HomePage();
+    case 1:
+      return const Text("Search");
+    case 2:
+      return const Text("Order");
+    case 3:
+      return const Text("Profile");
+    default:
+      return const HomePageTabs();
+  }
+});
+
+final selectedIndexProvider = StateProvider<int>((ref) => 0);
+
+void switchTab(int index, WidgetRef ref) {
+  ref.read(selectedIndexProvider.notifier).state = index;
 }
