@@ -1,50 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:zone/controllers/theme_controller.dart';
 import 'package:zone/utils/dimensions.dart';
 
-class LoadingActivity extends ConsumerWidget {
+class LoadingActivity extends StatefulWidget {
   const LoadingActivity({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    Map<String, dynamic> theme = ref.watch(selectThemeProvider);
-    return Positioned.fill(
+  State<LoadingActivity> createState() => _LoadingActivityState();
+}
+
+class _LoadingActivityState extends State<LoadingActivity> with SingleTickerProviderStateMixin {
+  late AnimationController loadingController;
+  late Animation<double> leftAnimation;
+  Size screenSize = WidgetsBinding.instance.platformDispatcher.views.first.physicalSize;
+  double ratio = WidgetsBinding.instance.platformDispatcher.views.first.devicePixelRatio;
+
+  @override
+  void initState() {
+    super.initState();
+    print(screenSize.width);
+    loadingController = AnimationController(vsync: this, duration: const Duration(milliseconds: 3000));
+    leftAnimation = Tween<double>(begin: 0, end: screenSize.width / ratio).animate(loadingController);
+
+    loadingController.addListener(() {
+      if (leftAnimation.value == screenSize.width / ratio) {
+        loadingController.reset();
+        loadingController.forward();
+      }
+      setState(() {});
+    });
+
+    loadingController.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 0,
+      right: 0,
+      left: leftAnimation.value,
       child: Container(
-        width: ScreenDimensions().dim_100(context),
-        height: ScreenDimensions().dim_100h(context),
-        decoration: BoxDecoration(
-          color: theme['background'],
-        ),
-        child: Center(
-          child: Container(
-            width: ScreenDimensions().dim_40(context),
-            height: ScreenDimensions().dim_40(context),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: theme['inputFieldLabel'],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SpinKitCircle(
-                  color: theme['primary'],
-                  size: 50,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Please wait...",
-                  style: GoogleFonts.inter(
-                    textStyle: TextStyle(),
-                  ),
-                )
-              ],
-            ),
-          ),
+        height: dim_05(context),
+        decoration: const BoxDecoration(
+          color: Colors.blue,
         ),
       ),
     );
