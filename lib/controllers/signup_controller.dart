@@ -21,11 +21,13 @@ final selectPasswordIconProvider = Provider<Icon>((ref) {
     return Icon(
       Icons.visibility_outlined,
       color: theme['inputFieldLabel'],
+      size: 20,
     );
   } else {
     return Icon(
       Icons.visibility_off_outlined,
       color: theme['inputFieldLabel'],
+      size: 20,
     );
   }
 });
@@ -37,11 +39,13 @@ final selectConfirmPasswordIconProvider = Provider<Icon>((ref) {
     return Icon(
       Icons.visibility_outlined,
       color: theme['inputFieldLabel'],
+      size: 20,
     );
   } else {
     return Icon(
       Icons.visibility_off_outlined,
       color: theme['inputFieldLabel'],
+      size: 20,
     );
   }
 });
