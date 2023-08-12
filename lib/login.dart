@@ -36,18 +36,18 @@ class LoginPage extends ConsumerWidget {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(ScreenDimensions().dim_10(context)),
+            padding: EdgeInsets.all(dim_10(context)),
             child: Center(
               child: Column(
                 children: [
                   Container(
-                    width: ScreenDimensions().dim_80(context),
-                    height: ScreenDimensions().dim_25(context),
+                    width: dim_80(context),
+                    height: dim_25(context),
                     alignment: Alignment.center,
                     color: Colors.grey.shade300,
                   ),
                   Container(
-                      padding: EdgeInsets.only(top: ScreenDimensions().dim_10(context), bottom: MediaQuery.of(context).size.width * 0.03),
+                      padding: EdgeInsets.only(top: dim_10(context), bottom: MediaQuery.of(context).size.width * 0.03),
                       alignment: Alignment.centerLeft,
                       child: const Text(
                         "Log into your account",
@@ -145,8 +145,8 @@ class LoginPage extends ConsumerWidget {
                     child: MaterialButton(
                       onPressed: () => handleLogin(),
                       color: Colors.brown,
-                      minWidth: ScreenDimensions().dim_80(context),
-                      height: ScreenDimensions().dim_15(context),
+                      minWidth: dim_80(context),
+                      height: dim_15(context),
                       textColor: Colors.white,
                       child: const Text(
                         "Login",
@@ -164,7 +164,7 @@ class LoginPage extends ConsumerWidget {
                         style: TextStyle(color: theme['inputFieldLabel']),
                       ),
                       TextButton(
-                        onPressed: () => ref.read(themeProvider.notifier).state = "dark",
+                        onPressed: () => ref.read(themeProvider.notifier).state = "light",
                         child: const Text(
                           "Sign up",
                           style: TextStyle(color: Colors.brown),
