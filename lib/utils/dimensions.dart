@@ -4,6 +4,10 @@ double dim_05(BuildContext context) {
   return MediaQuery.of(context).size.width * .05;
 }
 
+double dim_05H(BuildContext context) {
+  return MediaQuery.of(context).size.height * .05;
+}
+
 double dim_10(BuildContext context) {
   return MediaQuery.of(context).size.width * .1;
 }
@@ -48,8 +52,16 @@ double dim_60(BuildContext context) {
   return MediaQuery.of(context).size.width * .6;
 }
 
+double dim_60H(BuildContext context) {
+  return MediaQuery.of(context).size.height * .6;
+}
+
 double dim_65(BuildContext context) {
   return MediaQuery.of(context).size.width * .65;
+}
+
+double dim_65H(BuildContext context) {
+  return MediaQuery.of(context).size.height * .65;
 }
 
 double dim_70(BuildContext context) {
@@ -58,6 +70,10 @@ double dim_70(BuildContext context) {
 
 double dim_80(BuildContext context) {
   return MediaQuery.of(context).size.width * .8;
+}
+
+double dim_85(BuildContext context) {
+  return MediaQuery.of(context).size.width * .85;
 }
 
 double dim_90(BuildContext context) {
