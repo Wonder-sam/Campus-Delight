@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zone/home/homepage.dart';
 import 'package:zone/home/homepage_toptabs.dart';
+import 'package:zone/screens/profile/profile.dart';
 
 class BottomNavController {
   List<BottomNavigationBarItem> bottomTabs = const [
@@ -12,10 +13,6 @@ class BottomNavController {
     BottomNavigationBarItem(
       label: "Search",
       icon: Icon(Icons.search),
-    ),
-    BottomNavigationBarItem(
-      label: "My Orders",
-      icon: Icon(Icons.shopping_cart_outlined),
     ),
     BottomNavigationBarItem(
       label: "Profile",
@@ -36,9 +33,7 @@ final selectedTabProvider = Provider<Widget>((ref) {
     case 1:
       return const Text("Search");
     case 2:
-      return const Text("Order");
-    case 3:
-      return const Text("Profile");
+      return Profile();
     default:
       return const HomePageTabs();
   }
