@@ -15,7 +15,6 @@ class LoginPage extends ConsumerWidget {
     final usernameEmail = ref.watch(usernameEmailProvider);
     final password = ref.watch(passwordProvider);
     final passwordVisibility = ref.watch(loginPasswordVisibilityProvider);
-    final themeText = ref.watch(themeProvider);
     Map<String, dynamic> theme = ref.watch(selectThemeProvider);
     Icon loginSelectedPasswordIcon = ref.watch(loginSelectPasswordIconProvider);
 
@@ -164,7 +163,7 @@ class LoginPage extends ConsumerWidget {
                         style: TextStyle(color: theme['inputFieldLabel']),
                       ),
                       TextButton(
-                        onPressed: () => ref.read(themeProvider.notifier).state = "light",
+                        onPressed: () => handleLogin(),
                         child: const Text(
                           "Sign up",
                           style: TextStyle(color: Colors.brown),
