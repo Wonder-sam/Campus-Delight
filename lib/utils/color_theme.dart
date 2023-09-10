@@ -10,6 +10,7 @@ final Map<String, dynamic> lightTheme = {
   "texts": Colors.white70,
   "buttonWrapper": Colors.grey.shade100,
   "activity": Colors.blue,
+  "grey": Colors.grey.shade500
 };
 
 final Map<String, dynamic> darkTheme = {
@@ -21,5 +22,6 @@ final Map<String, dynamic> darkTheme = {
   "inputFieldText": Colors.grey,
   "texts": Colors.white70,
   "buttonWrapper": Colors.grey.shade900,
-  "activity": Colors.white
+  "activity": Colors.white,
+  "grey": Colors.grey.shade500
 };
