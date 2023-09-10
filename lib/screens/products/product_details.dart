@@ -63,6 +63,27 @@ class ProductDetails extends ConsumerWidget {
                     ),
                   ),
                 ),
+                Positioned(
+                  top: dim_05(context),
+                  child: IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: dim_05(context),
+                  right: 0,
+                  child: const IconButton(
+                    onPressed: null,
+                    icon: Icon(
+                      Icons.favorite_outline,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ],
             ),
             Container(
