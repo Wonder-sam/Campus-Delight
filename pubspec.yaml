@@ -50,8 +50,8 @@ dependencies:
   carousel_slider: ^4.2.1
 
 flutter_native_splash:
-  color: "#795548"
-  image: assets/splash.png
+  color: "#FFFFFF"
+  image: assets/bruner.png
   web: true
   web_image_mode: center
   android_gravity: center
@@ -69,10 +69,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
 
-flutter_icons:
-  android: true
+flutter_launcher_icons:
+  android: "launcher_icon"
   ios: true
-  image_path: assets/splash.png
+  image_path: assets/bruner.png
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
