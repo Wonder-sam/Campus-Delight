@@ -61,3 +61,12 @@ Future<String> login(String email, String password) async {
       );
   return status;
 }
+
+Future<String> logout() async {
+  String status = "Something went wrong! Try again later";
+  await auth.signOut().then(
+        (value) => status = "success",
+        onError: (e) => status = 'faliure',
+      );
+  return status;
+}
