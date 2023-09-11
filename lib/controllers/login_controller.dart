@@ -38,3 +38,8 @@ void usernameEmailHandler(String text, WidgetRef ref) {
 void passwordHandler(String text, WidgetRef ref) {
   ref.read(passwordProvider.notifier).state = text;
 }
+
+void clearLoginInfo(WidgetRef ref) {
+  ref.read(passwordProvider.notifier).state = "";
+  ref.read(usernameEmailProvider.notifier).state = "";
+}
