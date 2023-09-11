@@ -33,15 +33,17 @@ class LoginPage extends ConsumerWidget {
         );
         String loginStatus = await login(usernameEmail, password);
         if (loginStatus == "success") {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
           ScaffoldMessenger.of(context).showSnackBar(
             feedbackSnackbar(
               "Login successful",
-              dim_90h(context) - 5,
+              dim_80h(context),
               dim_05(context),
               const Icon(Icons.check_circle, color: Colors.green),
               theme,
             ),
           );
+          clearLoginInfo(ref);
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => const BottomNavigator(),
