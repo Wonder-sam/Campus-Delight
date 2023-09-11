@@ -5,7 +5,9 @@ import 'package:zone/controllers/bottom_navigation.dart';
 import 'package:zone/controllers/login_controller.dart';
 import 'package:zone/controllers/theme_controller.dart';
 import 'package:zone/firebase/firebase_functions.dart';
+import 'package:zone/screens/signup.dart';
 import 'package:zone/utils/dimensions.dart';
+import 'package:zone/widgets/snackbar.dart';
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,15 +17,55 @@ class LoginPage extends ConsumerWidget {
     final usernameEmail = ref.watch(usernameEmailProvider);
     final password = ref.watch(passwordProvider);
     final passwordVisibility = ref.watch(loginPasswordVisibilityProvider);
+    final shouldLogin = ref.watch(shouldLoginProvider);
     Map<String, dynamic> theme = ref.watch(selectThemeProvider);
     Icon loginSelectedPasswordIcon = ref.watch(loginSelectPasswordIconProvider);
 
     void handleLogin() async {
-      String loginStatus = await login(usernameEmail, password);
-      if (loginStatus == "success") {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const BottomNavigator(),
+      if (shouldLogin) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          activitySnackbar(
+            "Logging In",
+            dim_90h(context) - 5,
+            dim_05(context),
+            theme,
+          ),
+        );
+        String loginStatus = await login(usernameEmail, password);
+        if (loginStatus == "success") {
+          ScaffoldMessenger.of(context).showSnackBar(
+            feedbackSnackbar(
+              "Login successful",
+              dim_90h(context) - 5,
+              dim_05(context),
+              const Icon(Icons.check_circle, color: Colors.green),
+              theme,
+            ),
+          );
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const BottomNavigator(),
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            feedbackSnackbar(
+              loginStatus,
+              dim_90h(context) - 5,
+              dim_05(context),
+              const Icon(Icons.error, color: Colors.red),
+              theme,
+            ),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          feedbackSnackbar(
+            "Enter username/password",
+            dim_90h(context) - 5,
+            dim_05(context),
+            const Icon(Icons.error, color: Colors.red),
+            theme,
           ),
         );
       }
@@ -163,7 +205,7 @@ class LoginPage extends ConsumerWidget {
                         style: TextStyle(color: theme['inputFieldLabel']),
                       ),
                       TextButton(
-                        onPressed: () => handleLogin(),
+                        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpScreen())),
                         child: const Text(
                           "Sign up",
                           style: TextStyle(color: Colors.brown),
