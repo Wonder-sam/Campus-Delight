@@ -8,7 +8,6 @@ import 'package:zone/models/cart.dart';
 import 'package:zone/screens/cart/cart.dart';
 import 'package:zone/utils/dimensions.dart';
 import 'package:zone/widgets/product_card.dart';
-
 import '../controllers/theme_controller.dart';
 
 class HomePage extends ConsumerWidget {
@@ -44,13 +43,14 @@ class HomePage extends ConsumerWidget {
                 ),
                 icon: Icon(
                   Icons.shopping_cart_outlined,
-                  color: theme['inputFieldText'],
+                  color: theme['inputFieldLabel'],
                 ),
               ),
               Positioned(
                 top: dim_05(context) / 2.5,
                 right: dim_05(context) / 1.7,
                 child: Badge(
+                  backgroundColor: theme['notify'],
                   label: Text(
                     cartItems.length.toString(),
                     style: GoogleFonts.poppins(
@@ -67,6 +67,7 @@ class HomePage extends ConsumerWidget {
           )
         ],
       ),
+      backgroundColor: theme['background'],
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,8 +86,8 @@ class HomePage extends ConsumerWidget {
                   label: Text(
                     "Search",
                     style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        color: Colors.black54,
+                      textStyle: TextStyle(
+                        color: theme['inputFieldText'],
                       ),
                     ),
                   ),
@@ -233,7 +234,7 @@ class HomePage extends ConsumerWidget {
                 "Cakes & Pastries",
                 style: GoogleFonts.poppins(
                   textStyle: TextStyle(
-                    color: theme['primary'],
+                    color: theme['inputFieldLabel'],
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -267,7 +268,7 @@ class HomePage extends ConsumerWidget {
                 "Meals",
                 style: GoogleFonts.poppins(
                   textStyle: TextStyle(
-                    color: theme['primary'],
+                    color: theme['inputFieldLabel'],
                     fontWeight: FontWeight.w500,
                   ),
                 ),
