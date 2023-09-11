@@ -10,7 +10,8 @@ final Map<String, dynamic> lightTheme = {
   "texts": Colors.white70,
   "buttonWrapper": Colors.grey.shade100,
   "activity": Colors.blue,
-  "grey": Colors.grey.shade500
+  "grey": Colors.grey.shade500,
+  "notify": Colors.red
 };
 
 final Map<String, dynamic> darkTheme = {
@@ -18,10 +19,11 @@ final Map<String, dynamic> darkTheme = {
   "themeBackground": ColorScheme.fromSwatch(backgroundColor: Colors.black12),
   "background": Colors.black54,
   "inputFieldBorder": Colors.white,
-  "inputFieldLabel": Colors.grey,
+  "inputFieldLabel": Colors.white,
   "inputFieldText": Colors.grey,
   "texts": Colors.white70,
   "buttonWrapper": Colors.grey.shade900,
   "activity": Colors.white,
-  "grey": Colors.grey.shade500
+  "grey": Colors.grey.shade500,
+  "notify": Colors.white
 };
