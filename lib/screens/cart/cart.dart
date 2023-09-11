@@ -32,7 +32,7 @@ class Cart extends ConsumerWidget {
           "Cart",
           style: GoogleFonts.poppins(
             textStyle: TextStyle(
-              color: theme['primary'],
+              color: theme['inputFieldLabel'],
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -44,7 +44,7 @@ class Cart extends ConsumerWidget {
           onPressed: () => Navigator.of(context).pop(),
           icon: Icon(
             Icons.arrow_back,
-            color: theme['primary'],
+            color: theme['inputFieldLabel'],
           ),
         ),
         actions: [
@@ -71,6 +71,7 @@ class Cart extends ConsumerWidget {
           ),
         ],
       ),
+      backgroundColor: theme['background'],
       body: Stack(
         children: [
           ListView.separated(
@@ -86,7 +87,7 @@ class Cart extends ConsumerWidget {
               return Card(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(dim_05(context))),
                 elevation: 0,
-                color: theme['primary'],
+                color: theme['brownWrap'],
                 child: Column(
                   children: [
                     Container(
@@ -97,7 +98,7 @@ class Cart extends ConsumerWidget {
                         bottom: dim_05(context),
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
+                        color: theme['buttonWrapper'],
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(dim_05(context)),
                           bottomRight: Radius.circular(dim_05(context)),
@@ -116,7 +117,7 @@ class Cart extends ConsumerWidget {
                             children: [
                               Icon(
                                 Icons.storefront,
-                                color: theme['primary'],
+                                color: theme['inputFieldLabel'],
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 10),
@@ -124,7 +125,7 @@ class Cart extends ConsumerWidget {
                                   cartShops.elementAt(index),
                                   style: GoogleFonts.poppins(
                                     textStyle: TextStyle(
-                                      color: theme['primary'],
+                                      color: theme['inputFieldLabel'],
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -144,11 +145,14 @@ class Cart extends ConsumerWidget {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Image.asset(
-                                      cartItems.where((element) => element.shop == cartShops.elementAt(index)).elementAt(nindex).productImage,
-                                      width: dim_25(context),
-                                      height: dim_25(context),
-                                      fit: BoxFit.cover,
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Image.asset(
+                                        cartItems.where((element) => element.shop == cartShops.elementAt(index)).elementAt(nindex).productImage,
+                                        width: dim_25(context),
+                                        height: dim_25(context),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                     const SizedBox(width: 15),
                                     Column(
@@ -158,9 +162,21 @@ class Cart extends ConsumerWidget {
                                       children: [
                                         Text(
                                           cartItems.where((element) => element.shop == cartShops.elementAt(index)).elementAt(nindex).productName,
+                                          style: GoogleFonts.poppins(
+                                            textStyle: TextStyle(
+                                              color: theme['inputFieldLabel'],
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
                                         ),
                                         Text(
                                           cartItems.where((element) => element.shop == cartShops.elementAt(index)).elementAt(nindex).productPrice.toStringAsFixed(2),
+                                          style: GoogleFonts.poppins(
+                                            textStyle: TextStyle(
+                                              color: theme['inputFieldLabel'],
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     )
@@ -175,7 +191,7 @@ class Cart extends ConsumerWidget {
                     Container(
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        color: theme['primary'],
+                        color: theme['brownWrap'],
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(dim_05(context)),
                           bottomRight: Radius.circular(dim_05(context)),
@@ -226,7 +242,7 @@ class Cart extends ConsumerWidget {
                     right: dim_05(context),
                   ),
                   decoration: BoxDecoration(
-                    color: theme['primary'],
+                    color: theme['brownWrap'],
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(dim_05(context)),
                       topRight: Radius.circular(dim_05(context)),
@@ -266,7 +282,7 @@ class Cart extends ConsumerWidget {
                           ElevatedButton(
                             onPressed: null,
                             style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(theme['background']),
+                              backgroundColor: MaterialStatePropertyAll(theme['inputFieldLabel']),
                               shape: MaterialStatePropertyAll(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
@@ -277,7 +293,7 @@ class Cart extends ConsumerWidget {
                               "Checkout",
                               style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
-                                  color: theme['primary'],
+                                  color: theme['background'],
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),

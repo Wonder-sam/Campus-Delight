@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zone/controllers/bottom_nav_controller.dart';
 import 'package:zone/controllers/theme_controller.dart';
 import 'package:zone/firebase/firebase_functions.dart';
 import 'package:zone/login.dart';
@@ -67,9 +68,10 @@ class Profile extends ConsumerWidget {
     handleLogout() {
       logout().then((value) {
         if (value == 'success') {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          ref.watch(selectedIndexProvider.notifier).state = 0;
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) {
             return const LoginPage();
-          }));
+          }), (Route<dynamic> route) => false);
         }
       });
     }

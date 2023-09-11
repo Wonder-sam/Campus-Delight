@@ -21,8 +21,8 @@ activitySnackbar(String text, double height, double width, Map<String, dynamic> 
             Text(
               text,
               style: GoogleFonts.poppins(
-                textStyle: const TextStyle(
-                  color: Colors.black,
+                textStyle: TextStyle(
+                  color: color['inputFieldText'],
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -31,7 +31,7 @@ activitySnackbar(String text, double height, double width, Map<String, dynamic> 
         )
       ],
     ),
-    backgroundColor: color['background'],
+    backgroundColor: color['buttonWrapper'],
     dismissDirection: DismissDirection.up,
     behavior: SnackBarBehavior.floating,
     margin: EdgeInsets.only(bottom: height, left: width, right: width),
@@ -52,8 +52,8 @@ feedbackSnackbar(String text, double height, double width, Icon icon, Map<String
             Text(
               text,
               style: GoogleFonts.poppins(
-                textStyle: const TextStyle(
-                  color: Colors.black,
+                textStyle: TextStyle(
+                  color: color['inputFieldText'],
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -62,7 +62,7 @@ feedbackSnackbar(String text, double height, double width, Icon icon, Map<String
         )
       ],
     ),
-    backgroundColor: color['background'],
+    backgroundColor: color['buttonWrapper'],
     dismissDirection: DismissDirection.up,
     behavior: SnackBarBehavior.floating,
     margin: EdgeInsets.only(bottom: height, left: width, right: width),
