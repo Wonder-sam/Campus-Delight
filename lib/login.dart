@@ -85,41 +85,48 @@ class LoginPage extends ConsumerWidget {
                     width: dim_80(context),
                     height: dim_25(context),
                     alignment: Alignment.center,
-                    color: Colors.grey.shade300,
+                    color: Colors.transparent,
+                    child: Image.asset('assets/brunLong.png'),
                   ),
                   Container(
-                      padding: EdgeInsets.only(top: dim_10(context), bottom: MediaQuery.of(context).size.width * 0.03),
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Log into your account",
-                        style: TextStyle(color: Colors.grey, fontSize: 16),
-                      )),
+                    padding: EdgeInsets.only(top: dim_10(context), bottom: dim_100(context) * 0.03),
+                    alignment: Alignment.centerLeft,
+                    child: const Text(
+                      "Log into your account",
+                      style: TextStyle(color: Colors.grey, fontSize: 16),
+                    ),
+                  ),
                   TextField(
                     onChanged: (text) => usernameEmailHandler(text, ref),
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         color: theme['inputFieldLabel'],
                       ),
                     ),
                     decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(left: dim_10(context), top: 18, bottom: 18),
                       labelText: "Username/Email",
-                      labelStyle: TextStyle(color: theme['inputFieldLabel'], fontSize: 14),
+                      labelStyle: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: theme['inputFieldLabel'],
+                        ),
+                      ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderRadius: BorderRadius.circular(dim_20(context)),
                         borderSide: BorderSide(
                           width: 0.5,
                           color: theme['inputFieldBorder'],
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderRadius: BorderRadius.circular(dim_20(context)),
                         borderSide: BorderSide(
                           width: 0.9,
                           color: theme['inputFieldBorder'],
                         ),
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
+                        borderRadius: BorderRadius.circular(dim_20(context)),
                         borderSide: BorderSide(
                           width: 0.5,
                           color: theme['inputFieldBorder'],
@@ -127,28 +134,33 @@ class LoginPage extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  SizedBox(height: dim_05H(context)),
                   TextField(
                     onChanged: (text) => passwordHandler(text, ref),
                     obscureText: !passwordVisibility,
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         color: theme['inputFieldLabel'],
                       ),
                     ),
                     decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(left: dim_10(context), top: 18, bottom: 18),
                       labelText: "Password",
-                      labelStyle: TextStyle(
-                        color: theme['inputFieldLabel'],
-                        fontSize: 14,
+                      labelStyle: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: theme['inputFieldLabel'],
+                          fontSize: 14,
+                        ),
                       ),
                       suffixIcon: IconButton(
                         onPressed: () => ref.read(loginPasswordVisibilityProvider.notifier).state = !passwordVisibility,
                         icon: loginSelectedPasswordIcon,
+                        iconSize: 20,
+                        padding: const EdgeInsets.only(right: 20),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          MediaQuery.of(context).size.width * 0.04,
+                          dim_20(context),
                         ),
                         borderSide: BorderSide(
                           width: 0.5,
@@ -157,7 +169,7 @@ class LoginPage extends ConsumerWidget {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          MediaQuery.of(context).size.width * 0.04,
+                          dim_20(context),
                         ),
                         borderSide: BorderSide(
                           width: 0.9,
@@ -166,7 +178,7 @@ class LoginPage extends ConsumerWidget {
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
-                          MediaQuery.of(context).size.width * 0.04,
+                          dim_20(context),
                         ),
                         borderSide: BorderSide(
                           width: 0.5,
@@ -176,22 +188,34 @@ class LoginPage extends ConsumerWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
+                    padding: EdgeInsets.all(dim_100(context) * 0.02),
                     width: double.maxFinite,
                     alignment: Alignment.centerRight,
-                    child: const Text("Forgotten password?"),
+                    child: Text(
+                      "Forgotten password?",
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: theme['inputFieldLabel'],
+                        ),
+                      ),
+                    ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.02),
+                    padding: EdgeInsets.only(top: dim_10H(context)),
                     child: MaterialButton(
                       onPressed: () => handleLogin(),
-                      color: Colors.brown,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(dim_20(context))),
+                      color: theme['inputFieldLabel'],
                       minWidth: dim_80(context),
                       height: dim_15(context),
                       textColor: Colors.white,
-                      child: const Text(
+                      child: Text(
                         "Login",
-                        style: TextStyle(fontWeight: FontWeight.w400),
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            color: theme['background'],
+                          ),
+                        ),
                       ),
                     ),
                   ),
