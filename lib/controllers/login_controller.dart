@@ -5,6 +5,15 @@ import 'package:zone/controllers/theme_controller.dart';
 final usernameEmailProvider = StateProvider<String>((ref) => "");
 final passwordProvider = StateProvider<String>((ref) => "");
 final loginPasswordVisibilityProvider = StateProvider((ref) => false);
+final shouldLoginProvider = Provider<bool>((ref) {
+  String username = ref.watch(usernameEmailProvider);
+  String password = ref.watch(passwordProvider);
+  if (password.isNotEmpty && username.isNotEmpty) {
+    return true;
+  }
+  return false;
+});
+final loginActivityProvider = StateProvider<bool>((ref) => false);
 
 final loginSelectPasswordIconProvider = Provider<Icon>((ref) {
   Map<String, dynamic> theme = ref.watch(selectThemeProvider);
