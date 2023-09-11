@@ -78,7 +78,7 @@ class ProductCard extends ConsumerWidget {
                                 ),
                                 child: Container(
                                   padding: const EdgeInsets.all(5),
-                                  color: const Color(0xC9795548),
+                                  color: theme['primary'],
                                   child: Text(
                                     "Add to cart",
                                     style: GoogleFonts.poppins(
@@ -95,7 +95,7 @@ class ProductCard extends ConsumerWidget {
                                 ),
                                 child: Container(
                                   padding: const EdgeInsets.all(5),
-                                  color: const Color(0xC9795548),
+                                  color: theme['primary'],
                                   child: Text(
                                     "Add to Favorite",
                                     style: GoogleFonts.poppins(
@@ -112,7 +112,7 @@ class ProductCard extends ConsumerWidget {
                                 ),
                                 child: Container(
                                   padding: const EdgeInsets.all(5),
-                                  color: const Color(0xC9795548),
+                                  color: theme['primary'],
                                   child: Text(
                                     "Report",
                                     style: GoogleFonts.poppins(
@@ -142,6 +142,7 @@ class ProductCard extends ConsumerWidget {
                         Product.getProducts()[index].productName,
                         style: GoogleFonts.montserrat(
                           textStyle: TextStyle(
+                            color: theme['inputFieldLabel'],
                             fontWeight: FontWeight.w600,
                             fontSize: MediaQuery.of(context).size.width * 0.035,
                           ),
@@ -152,7 +153,7 @@ class ProductCard extends ConsumerWidget {
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
-                            color: Colors.grey.shade500,
+                            color: theme['grey'],
                             fontSize: 10,
                           ),
                         ),
@@ -163,7 +164,7 @@ class ProductCard extends ConsumerWidget {
                           textStyle: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: MediaQuery.of(context).size.width * 0.035,
-                            color: theme['primary'],
+                            color: theme['inputFieldLabel'],
                           ),
                         ),
                       )
@@ -176,7 +177,7 @@ class ProductCard extends ConsumerWidget {
                     onPressed: () => check(index),
                     icon: Icon(
                       Icons.more_vert_outlined,
-                      color: theme['primary'],
+                      color: theme['inputFieldLabel'],
                     ),
                   )
                 ],
