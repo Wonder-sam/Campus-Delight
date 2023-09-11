@@ -72,12 +72,24 @@ double dim_80(BuildContext context) {
   return MediaQuery.of(context).size.width * .8;
 }
 
+double dim_80h(BuildContext context) {
+  return MediaQuery.of(context).size.height * .8;
+}
+
 double dim_85(BuildContext context) {
   return MediaQuery.of(context).size.width * .85;
 }
 
+double dim_85h(BuildContext context) {
+  return MediaQuery.of(context).size.height * .85;
+}
+
 double dim_90(BuildContext context) {
   return MediaQuery.of(context).size.width * .9;
+}
+
+double dim_90h(BuildContext context) {
+  return MediaQuery.of(context).size.height * .9;
 }
 
 double dim_100(BuildContext context) {
